@@ -1,3 +1,4 @@
+import copy from 'rollup-plugin-copy';
 import commonjs from 'rollup-plugin-commonjs';
 import vue from 'rollup-plugin-vue';
 import buble from 'rollup-plugin-buble';
@@ -31,6 +32,11 @@ export default (async () => ({
     eslint(),
     commonjs(),
     resolve(),
+    copy({
+      targets: [
+        { src: 'src/images/**/*', dest: 'dist/images' }
+      ]
+    }),
     replace({
       'process.env.NODE_ENV': JSON.stringify(env)
     }),

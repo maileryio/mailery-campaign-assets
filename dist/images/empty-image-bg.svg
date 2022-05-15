@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="75" height="100" viewBox="0 0 75 100">
+  <defs>
+    <rect id="empty-image-bg-b" width="59" height="77"/>
+    <filter id="empty-image-bg-a" width="135.6%" height="128.6%" x="-17.8%" y="-7.1%" filterUnits="objectBoundingBox">
+      <feOffset dy="6" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2.5"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.208567142   0 0 0 0 0.221008867   0 0 0 0 0.26725328  0 0 0 0.0519984149 0"/>
+    </filter>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <rect width="75" height="100" fill="#F9F9FA"/>
+    <g transform="translate(8 9)">
+      <use fill="#000" filter="url(#empty-image-bg-a)" xlink:href="#empty-image-bg-b"/>
+      <use fill="#FFF" xlink:href="#empty-image-bg-b"/>
+      <rect width="39" height="22" x="10" y="11" fill="#71738D" fill-opacity=".168" opacity=".513"/>
+      <rect width="39" height="3.5" x="10" y="45" fill="#71738D" fill-opacity=".168" opacity=".513"/>
+      <rect width="39" height="3.5" x="10" y="51.5" fill="#71738D" fill-opacity=".168" opacity=".513"/>
+      <rect width="39" height="3.5" x="10" y="58" fill="#71738D" fill-opacity=".168" opacity=".513"/>
+    </g>
+  </g>
+</svg>
