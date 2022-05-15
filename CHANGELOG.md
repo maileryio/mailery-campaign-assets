@@ -1,4 +1,4 @@
-# _____ Change Log
+# Mailery Campaign Assets Change Log
 
 ## 1.0.0 under development
 
