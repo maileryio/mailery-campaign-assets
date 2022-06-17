@@ -23,7 +23,9 @@
     "build:umd": "rollup --config build/rollup.config.js --format umd --file dist/main.umd.js",
     "build:umd:min": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format umd --file dist/main.umd.min.js"
   },
-  "dependencies": {},
+  "dependencies": {
+    "moment": "^2.29.3"
+  },
   "devDependencies": {
     "@vue/cli-plugin-unit-mocha": "^4.2.2",
     "@vue/cli-service": "^4.2.2",
