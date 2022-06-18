@@ -7266,12 +7266,15 @@
 	  },
 	  data: function data() {
 	    return {
-	      timer: null,
-	      currentTime: null
-	    }
+	      time: null,
+	      timer: null
+	    };
 	  },
 	  mounted: function mounted() {
 	    this.startTimer();
+	  },
+	  updated: function updated() {
+	    this.time = this.currentTime();
 	  },
 	  destroyed: function destroyed() {
 	    this.stopTimer();
@@ -7281,12 +7284,14 @@
 	      var this$1 = this;
 
 	      this.timer = setInterval(function () {
-	        console.log(this$1.timezone);
-	        this$1.currentTime = momentTimezone$1().tz(this$1.timezone).format(this$1.format);
+	        this$1.time = this$1.currentTime();
 	      }, 1000);
 	    },
 	    stopTimer: function stopTimer() {
 	      clearTimeout(this.timer);
+	    },
+	    currentTime: function currentTime() {
+	      return momentTimezone$1().tz(this.timezone).format(this.format);
 	    }
 	  }
 	};
@@ -7374,7 +7379,7 @@
 	  var _vm = this;
 	  var _h = _vm.$createElement;
 	  var _c = _vm._self._c || _h;
-	  return _c("span", [_vm._v(_vm._s(_vm.currentTime))])
+	  return _c("span", [_vm._v(_vm._s(_vm.time))])
 	};
 	var __vue_staticRenderFns__ = [];
 	__vue_render__._withStripped = true;

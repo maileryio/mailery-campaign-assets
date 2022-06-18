@@ -1,5 +1,5 @@
 <template>
-  <span>{{ currentTime }}</span>
+  <span>{{ time }}</span>
 </template>
 
 <script>
@@ -13,12 +13,15 @@
     },
     data() {
       return {
-        timer: null,
-        currentTime: null
-      }
+        time: null,
+        timer: null
+      };
     },
     mounted() {
       this.startTimer();
+    },
+    updated() {
+      this.time = this.currentTime();
     },
     destroyed() {
       this.stopTimer();
@@ -26,12 +29,14 @@
     methods: {
       startTimer() {
         this.timer = setInterval(() => {
-          console.log(this.timezone)
-          this.currentTime = moment().tz(this.timezone).format(this.format)
-        }, 1000)
+          this.time = this.currentTime();
+        }, 1000);
       },
       stopTimer() {
-        clearTimeout(this.timer)
+        clearTimeout(this.timer);
+      },
+      currentTime() {
+        return moment().tz(this.timezone).format(this.format);
       }
     }
   }
