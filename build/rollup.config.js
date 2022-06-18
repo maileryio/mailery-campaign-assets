@@ -1,11 +1,11 @@
-import copy from 'rollup-plugin-copy';
 import commonjs from 'rollup-plugin-commonjs';
 import vue from 'rollup-plugin-vue';
 import buble from 'rollup-plugin-buble';
 import replace from 'rollup-plugin-replace';
 import resolve from 'rollup-plugin-node-resolve';
 import { eslint } from 'rollup-plugin-eslint';
-import sassPostcss from 'rollup-plugin-sass-postcss';
+import postcss from 'rollup-plugin-postcss';
+import copy from 'rollup-plugin-copy';
 import json from '@rollup/plugin-json';
 import autoprefixer from 'autoprefixer';
 
@@ -18,35 +18,32 @@ export default (async () => ({
     name: 'mailery.campaign',
     exports: 'named',
     globals: {
-      'bootstrap-vue': 'BootstrapVue',
       'vue': 'Vue',
-      'vuex': 'Vuex'
+      'vuex': 'Vuex',
+      'bootstrap-vue': 'BootstrapVue'
     },
     sourcemap: true
   },
   external: [
-    'bootstrap-vue',
     'vue',
-    'vuex'
+    'vuex',
+    'bootstrap-vue'
   ],
   plugins: [
     eslint(),
     commonjs(),
     resolve(),
-    copy({
-      targets: [
-        { src: 'src/images/**/*', dest: 'dist/images' }
-      ]
-    }),
     replace({
       'process.env.NODE_ENV': JSON.stringify(env)
     }),
-    sassPostcss({
-      output: 'dist/main.min.css',
-      sourcemap: true,
+    postcss({
+      use: ['sass'],
+      minimize: isProd,
+      sourceMap: true,
       plugins: [
         autoprefixer()
-      ]
+      ],
+      extract: 'dist/main.min.css'
     }),
     vue({
       css: true,
@@ -55,6 +52,11 @@ export default (async () => ({
     json(),
     buble({
       objectAssign: 'Object.assign'
+    }),
+    copy({
+      targets: [
+        { src: 'src/images/**/*', dest: 'dist/images' }
+      ]
     }),
     isProd && (await import('rollup-plugin-terser')).terser()
   ]
