@@ -6,6 +6,7 @@ import replace from 'rollup-plugin-replace';
 import resolve from 'rollup-plugin-node-resolve';
 import { eslint } from 'rollup-plugin-eslint';
 import sassPostcss from 'rollup-plugin-sass-postcss';
+import json from '@rollup/plugin-json';
 import autoprefixer from 'autoprefixer';
 
 const env = process.env.NODE_ENV || 'development';
@@ -51,6 +52,7 @@ export default (async () => ({
       css: true,
       compileTemplate: true
     }),
+    json(),
     buble({
       objectAssign: 'Object.assign'
     }),
