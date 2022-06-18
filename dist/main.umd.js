@@ -7281,6 +7281,7 @@
 	      var this$1 = this;
 
 	      this.timer = setInterval(function () {
+	        console.log(this$1.timezone);
 	        this$1.currentTime = momentTimezone$1().tz(this$1.timezone).format(this$1.format);
 	      }, 1000);
 	    },

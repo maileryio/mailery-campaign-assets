@@ -26,6 +26,7 @@
     methods: {
       startTimer() {
         this.timer = setInterval(() => {
+          console.log(this.timezone)
           this.currentTime = moment().tz(this.timezone).format(this.format)
         }, 1000)
       },
